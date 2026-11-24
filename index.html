@@ -3,31 +3,108 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>반뼘</title>
-<link rel="stylesheet" href="style.css">
+<title>반뼘 - 연인과 고른 만큼만 나누는 위치</title>
+<meta name="description" content="연인과 서로 동의해 고른 만큼만 위치를 나눠요. 지도 위 점 대신 &quot;퇴근 (평소보다 2시간 늦게)&quot;처럼 말로 알려 줘요.">
+<meta property="og:title" content="반뼘 - 연인과 고른 만큼만 나누는 위치">
+<meta property="og:description" content="'어디야?' 물어보지 않아도 서로의 하루를 '반뼘' 가까이">
+<meta property="og:url" content="https://banppyeom.co.kr/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FFE6EE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* 반뼘 소개 첫 화면 (시안 'C+B 섞기' 추천안). 색은 앱 테마 A 마시멜로 핑크 */
+:root{--bg:#FFF6F8;--hero:#FFE6EE;--ink:#2E1F27;--deep:#4A2B3A;--sub:#7A5466;--line:#F3D3DF;--accent:#C2547E;
+  --sans:"Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%;word-break:keep-all;overflow-wrap:break-word}
+a{color:inherit}
+.in{max-width:560px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left));padding-right:max(22px,env(safe-area-inset-right))}
+h1,h2,p{margin:0}
+.hero{background:var(--hero);text-align:center;overflow:hidden}
+.hero .in{padding-top:48px}
+.brand{font-weight:900;font-size:15px;color:var(--accent);margin-bottom:18px;letter-spacing:.02em}
+h1{font-size:clamp(27px,6.6vw,38px);line-height:1.3;margin:0 0 24px;font-weight:900;letter-spacing:-.02em;color:var(--deep);text-wrap:balance}
+.stores{display:flex;gap:8px;flex-wrap:wrap;max-width:420px;margin:0 auto}
+.store{flex:1 1 140px;display:flex;align-items:center;gap:8px;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.25;background:var(--deep);color:#fff;text-align:left;cursor:default}
+.store b{display:block;font-size:14px}
+.store .si{flex:none;font-size:13px;opacity:.85}
+.soon{font-size:13px;color:var(--sub);margin-top:8px}
+.phone{background:#FFF6F8;border:6px solid var(--ink);border-bottom:0;border-radius:28px 28px 0 0;overflow:hidden;width:min(280px,78vw);margin:32px auto 0;line-height:0}
+.phone img{display:block;width:100%;height:auto}
+.band{background:var(--deep);color:#FCE8F0}
+.band .in{padding-top:30px;padding-bottom:30px}
+.band h2{color:#fff;font-size:20px;margin-bottom:14px}
+.band ol{margin:0;padding-left:20px;display:grid;gap:9px;font-size:15px}
+.band b{color:#fff}
+section .in{padding-top:40px;padding-bottom:40px}
+section h2{font-size:23px;line-height:1.35;margin-bottom:18px;letter-spacing:-.01em;text-wrap:balance}
+.feat{display:grid;gap:16px}
+.f{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}
+.f .ic{width:44px;height:44px;border-radius:14px;background:var(--hero);display:grid;place-items:center;font-weight:900;color:var(--accent)}
+.f b{display:block;font-size:17px}
+.f span{color:var(--sub);font-size:15px}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.shots figure{margin:0}
+.shots img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:#fff}
+.shots figcaption{font-size:13px;color:var(--sub);margin-top:6px;text-align:center}
+.foot{background:#fff;color:#8B6A7A;border-top:1px solid var(--line);font-size:12.5px;line-height:1.75}
+.foot .in{padding-top:26px;padding-bottom:max(36px,env(safe-area-inset-bottom))}
+.foot .links{display:flex;flex-wrap:wrap;gap:4px 14px;margin-bottom:12px;font-weight:700;font-size:13.5px;color:var(--deep)}
+</style>
 </head>
 <body>
-<main>
-<header>
-  <span class="brand">판타레이</span>
-  <h1>반뼘</h1>
-  <p class="meta">연인과 서로 고른 만큼만 위치를 나누는 커플 앱</p>
+<header class="hero">
+  <div class="in">
+    <p class="brand">반뼘</p>
+    <h1>‘어디야?’ 물어보지 않아도<br>서로의 하루를 ‘반뼘’ 가까이</h1>
+    <div class="stores">
+      <div class="store" aria-disabled="true"><span class="si">▶</span><span>곧 출시<b>Google Play</b></span></div>
+      <div class="store" aria-disabled="true"><span class="si">●</span><span>곧 출시<b>App Store</b></span></div>
+    </div>
+    <p class="soon">지금 출시 준비 중이에요</p>
+    <div class="phone"><img src="img/home.webp" width="540" height="1160" alt="반뼘 홈 화면: 상대의 지금 상태를 말로 보여 줘요 (예시 데이터)"></div>
+  </div>
 </header>
 
-<div class="box">
-  <h2 style="margin-top:0">정책 문서</h2>
-  <ul>
-    <li><a href="terms.html">이용약관</a></li>
-    <li><a href="location-terms.html">위치기반서비스 이용약관</a></li>
-    <li><a href="privacy.html">개인정보처리방침</a></li>
-    <li><a href="delete-account.html">계정 삭제 안내</a></li>
-  </ul>
+<div class="band">
+  <div class="in">
+    <h2>반뼘의 약속</h2>
+    <ol>
+      <li><b>둘 다 동의해야 연결돼요.</b> 몰래 켜는 방법은 없어요.</li>
+      <li><b>올릴 땐 둘이, 내릴 땐 혼자.</b> 허락 없이 바로 멈춰요.</li>
+      <li><b>나누는 동안엔 알림창에 "위치 공유 중"</b>이 늘 떠 있어요.</li>
+      <li><b>오래 두지 않아요.</b> 하루 동선은 30일, 끄면 바로 지워요.</li>
+    </ol>
+  </div>
 </div>
 
-<footer>
-  상호 판타레이 · 대표 옥기영 · 서울특별시 강남구 테헤란로70길 12, 402-C33호<br>
-  사업자등록번호 342-02-03467 · 통신판매업 신고번호 제2026-서울강남-06697호 · 이메일 <a href="mailto:pantarei.korea@gmail.com">pantarei.korea@gmail.com</a>
-</footer>
+<main>
+<section>
+  <div class="in">
+    <h2>지도를 안 열어도 알 수 있게</h2>
+    <div class="feat">
+      <div class="f"><div class="ic">말</div><div><b>점 대신 말로</b><span>"회사 4시간째", "퇴근 (평소보다 2시간 늦게)"</span></div></div>
+      <div class="f"><div class="ic">톡</div><div><b>먼저 연락할 이유</b><span>퇴근하면 보낼 한마디를 챙겨 줘요. 누르면 메신저가 열려요</span></div></div>
+      <div class="f"><div class="ic">3</div><div><b>나눌 만큼은 둘이</b><span>완벽히 함께하기 · 이동할 때 알림 · 초보자</span></div></div>
+      <div class="f"><div class="ic">주</div><div><b>둘만의 기록</b><span>며칠째인지, 주마다 둘이 보낸 시간을 카드로</span></div></div>
+    </div>
+    <div class="shots">
+      <figure><img src="img/mode.webp" width="540" height="430" alt="공유 모드 고르기 화면" loading="lazy"><figcaption>나눌 만큼은 셋 중에 골라요</figcaption></figure>
+      <figure><img src="img/share.webp" width="540" height="363" alt="위치 공유 멈추기 화면" loading="lazy"><figcaption>잠깐 멈추기, 그만하기는 혼자서</figcaption></figure>
+    </div>
+  </div>
+</section>
 </main>
+
+<footer class="foot" id="support">
+  <div class="in">
+    <div class="links"><a href="terms.html">이용약관</a><a href="location-terms.html">위치기반서비스 이용약관</a><a href="privacy.html">개인정보처리방침</a><a href="pricing.html">요금·환불 안내</a><a href="delete-account.html">계정 삭제</a></div>
+    상호 판타레이 · 대표 옥기영 · 서울특별시 강남구 테헤란로70길 12, 402-C33호 · 전화 <a href="tel:01086527919">010-8652-7919</a><br>
+    사업자등록번호 342-02-03467 · 통신판매업 신고번호 제2026-서울강남-06697호 · 위치기반서비스사업 신고번호 제2002호<br>
+    문의 <a href="mailto:pantarei.korea@gmail.com">pantarei.korea@gmail.com</a>
+  </div>
+</footer>
 </body>
 </html>
