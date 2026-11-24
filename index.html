@@ -31,7 +31,18 @@ h1{font-size:clamp(27px,6.6vw,38px);line-height:1.3;margin:0 0 24px;font-weight:
 .store b{display:block;font-size:14px}
 .store .si{flex:none;font-size:13px;opacity:.85}
 .soon{font-size:13px;color:var(--sub);margin-top:8px}
-.strip{position:relative;margin-top:30px}
+.lock{max-width:380px;margin:4px auto 26px;border-radius:24px;padding:22px 14px 16px;background:linear-gradient(180deg,#3B2B4F,#7A4B6B 60%,#D98FA4);color:#fff;display:grid;gap:9px;box-shadow:0 18px 40px rgba(74,43,58,.22)}
+.lock .clock{font-size:52px;font-weight:500;line-height:1;letter-spacing:-.02em}
+.lock .date{font-size:13px;opacity:.85;margin-bottom:6px}
+.push{background:rgba(255,255,255,.94);border-radius:16px;padding:10px 12px;display:grid;grid-template-columns:30px 1fr;gap:10px;text-align:left;color:var(--ink)}
+.push.old{opacity:.84;transform:scale(.97)}
+.push .ic{width:30px;height:30px;border-radius:8px;background:#F7A8C0;display:grid;place-items:center}
+.push .t{font-size:11.5px;color:#8A7480;display:flex;justify-content:space-between}
+.push .m{font-size:15px;font-weight:700;line-height:1.4}
+.push .s{font-size:13.5px;color:var(--sub)}
+.hero .in{padding-bottom:34px}
+.shotsec{padding-top:34px}
+.strip{position:relative}
 .track{list-style:none;margin:0;padding:6px max(22px,calc(50vw - 520px)) 18px;display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:max(22px,calc(50vw - 520px));-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
 .track::-webkit-scrollbar{display:none}
 .track:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
@@ -70,12 +81,33 @@ section h2{font-size:23px;line-height:1.35;margin-bottom:18px;letter-spacing:-.0
   <div class="in">
     <p class="brand">반뼘</p>
     <h1>‘어디야?’ 물어보지 않아도<br>서로의 하루를 ‘반뼘’ 가까이</h1>
+    <div class="lock" role="img" aria-label="잠금화면에 온 반뼘 알림 예시: 오전 9시 2분 태훈 회사 도착, 오후 1시 10분 태훈 회사 4시간째, 지금 태훈 퇴근 평소보다 2시간 늦게, 오늘도 고생했어 한마디 보낼까요">
+      <p class="clock">21:03</p><p class="date">화요일 저녁 · 예시 화면</p>
+      <div class="push old"><div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4A2B3A" d="M12 21s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 7.5 2.8C19.5 16.4 12 21 12 21z"/></svg></div><div><div class="t"><span>반뼘</span><span>오전 9:02</span></div><p class="m">태훈 회사 도착</p></div></div>
+      <div class="push old"><div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4A2B3A" d="M12 21s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 7.5 2.8C19.5 16.4 12 21 12 21z"/></svg></div><div><div class="t"><span>반뼘</span><span>오후 1:10</span></div><p class="m">태훈 회사 4시간째 · 점심은 근처에서</p></div></div>
+      <div class="push"><div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4A2B3A" d="M12 21s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 7.5 2.8C19.5 16.4 12 21 12 21z"/></svg></div><div><div class="t"><span>반뼘</span><span>지금</span></div><p class="m">태훈 퇴근 (평소보다 2시간 늦게)</p><p class="s">오늘도 고생했어, 한마디 보낼까요?</p></div></div>
+    </div>
     <div class="stores">
       <div class="store" aria-disabled="true"><span class="si">▶</span><span>곧 출시<b>Google Play</b></span></div>
       <div class="store" aria-disabled="true"><span class="si">●</span><span>곧 출시<b>App Store</b></span></div>
     </div>
     <p class="soon">지금 출시 준비 중이에요</p>
   </div>
+</header>
+
+<div class="band">
+  <div class="in">
+    <h2>반뼘의 약속</h2>
+    <ol>
+      <li><b>둘 다 동의해야 연결돼요.</b> 몰래 켜는 방법은 없어요.</li>
+      <li><b>올릴 땐 둘이, 내릴 땐 혼자.</b> 허락 없이 바로 멈춰요.</li>
+      <li><b>나누는 동안엔 알림창에 "위치 공유 중"</b>이 늘 떠 있어요.</li>
+      <li><b>오래 두지 않아요.</b> 하루 동선은 30일, 끄면 바로 지워요.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="shotsec">
   <div class="strip" aria-label="반뼘 화면 둘러보기">
     <ul class="track" id="track" tabindex="0">
       <li class="slide"><img src="img/slide-01.webp" width="540" height="960" alt="연인의 점에 의미를 붙여요 - 홈 화면"></li>
@@ -91,18 +123,6 @@ section h2{font-size:23px;line-height:1.35;margin-bottom:18px;letter-spacing:-.0
     <button class="nav next" type="button" aria-label="다음 화면" data-d="1">›</button>
   </div>
   <p class="hint">옆으로 넘겨 보세요 · 실제 앱 화면(예시 데이터)</p>
-</header>
-
-<div class="band">
-  <div class="in">
-    <h2>반뼘의 약속</h2>
-    <ol>
-      <li><b>둘 다 동의해야 연결돼요.</b> 몰래 켜는 방법은 없어요.</li>
-      <li><b>올릴 땐 둘이, 내릴 땐 혼자.</b> 허락 없이 바로 멈춰요.</li>
-      <li><b>나누는 동안엔 알림창에 "위치 공유 중"</b>이 늘 떠 있어요.</li>
-      <li><b>오래 두지 않아요.</b> 하루 동선은 30일, 끄면 바로 지워요.</li>
-    </ol>
-  </div>
 </div>
 
 <main>
