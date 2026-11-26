@@ -41,7 +41,17 @@
     <p class="meta" style="margin-top:10px">앱이 없으면 Play 스토어로 가요. 설치한 뒤 반뼘을 열고 <b>커플 연결</b> 화면의 <b>받은 코드가 있어요</b> 칸에 위 코드를 넣어 주세요.</p>
   </div>
 
-  <!-- 그 밖(아이폰·PC) -->
+  <!-- 아이폰: 누르면 앱을 연다 (저절로 넘기지 않는다: 앱이 없으면 사파리가 '주소가 유효하지 않음' 창을 띄워서)
+       App Store 버튼은 APP_STORE_ID가 있을 때만 보인다 -->
+  <div id="ios" hidden>
+    <a class="btn main" id="iosOpen" href="#">반뼘 앱에서 열기</a>
+    <a class="btn sub" id="appStore" href="#" hidden>App Store에서 받기</a>
+    <!-- 출시 전(APP_STORE_ID 없음)에는 앱스토어 대신 이 한 줄 (2026-11-25 사용자 결정) -->
+    <p class="meta" id="iosSoon" style="margin-top:10px" hidden>아이폰 앱은 곧 나와요.</p>
+    <p class="meta" style="margin-top:10px">열리지 않으면 반뼘 앱을 열고 <b>커플 연결</b> 화면의 <b>받은 코드가 있어요</b> 칸에 위 코드를 넣어 주세요.</p>
+  </div>
+
+  <!-- 그 밖(PC 등) -->
   <div id="other" class="soft" hidden>
     <p style="margin-top:0"><b>반뼘 앱에서 열어 주세요</b></p>
     <ol>
@@ -64,9 +74,12 @@
 </main>
 <script>
 // 초대 링크 https://banppyeom.co.kr/invite/?c=코드 (앱 src/features/couple/inviteMessage.ts가 만든다)
-// 시험: parseCode·intentUrl은 inviteWebPage.test.ts, 화면(기기별 칸·저절로 넘기기 한 번·틀린 코드·복사 순서)은 inviteWebPage.dom.test.ts (src/features/couple/__tests__/)
+// 시험: parseCode·intentUrl·appUrl·appStoreUrl·isIos는 inviteWebPage.test.ts, 화면(기기별 칸·저절로 넘기기 한 번·틀린 코드·복사 순서)은 inviteWebPage.dom.test.ts (src/features/couple/__tests__/)
 var PACKAGE = 'com.pantarei.banppyeom';
 var STORE = 'https://play.google.com/store/apps/details?id=' + PACKAGE;
+// 아이폰 App Store 앱 번호. 출시 전이라 null (null이면 App Store 버튼을 숨긴다)
+// 출시되면 App Store Connect의 Apple ID 6839071311을 넣는다 (아이폰 출시 점검표 5-2)
+var APP_STORE_ID = null;
 
 // 코드: 영문 대문자·숫자 6자리만 (앱 초대 코드와 같은 꼴). 아니면 null
 function parseCode(search) {
@@ -80,6 +93,21 @@ function parseCode(search) {
 function intentUrl(code) {
   return 'intent://accept/' + code + '#Intent;scheme=banppyeom;package=' + PACKAGE +
     ';S.browser_fallback_url=' + encodeURIComponent(STORE) + ';end';
+}
+
+// 아이폰 앱 열기: 앱 딥링크 그대로 (앱 src/app/_layout의 초대 받기 열기와 같은 주소)
+function appUrl(code) {
+  return 'banppyeom://accept/' + code;
+}
+
+// App Store 주소. 번호가 없으면(출시 전) null
+function appStoreUrl(id) {
+  return id ? 'https://apps.apple.com/kr/app/id' + id : null;
+}
+
+// 아이폰·아이패드 (아이패드 사파리는 맥처럼 보이지만 터치가 있다)
+function isIos(ua, touchPoints) {
+  return /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && touchPoints > 1);
 }
 
 // 저절로 넘기기를 이 탭에서 이미 했는지: sessionStorage(새로고침·뒤로 가기에도 남음), 막힌 곳은 history.state
@@ -133,6 +161,16 @@ if (typeof document !== 'undefined') {
       if (!wasOpened(code)) {
         markOpened(code);
         setTimeout(function () { location.href = intentUrl(code); }, 300);
+      }
+    } else if (isIos(navigator.userAgent, navigator.maxTouchPoints || 0)) {
+      $('ios').hidden = false;
+      $('iosOpen').href = appUrl(code);
+      var storeUrl = appStoreUrl(APP_STORE_ID);
+      if (storeUrl) {
+        $('appStore').href = storeUrl;
+        $('appStore').hidden = false;
+      } else {
+        $('iosSoon').hidden = false;
       }
     } else {
       $('other').hidden = false;
