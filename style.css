@@ -21,6 +21,7 @@ th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-ali
 th{background:var(--soft);font-weight:700}
 nav.docs{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px}
 a{color:var(--accent)}
+footer a[href^="tel:"]{white-space:nowrap} /* 전화번호가 줄 중간에서 끊기지 않게 (2026-11-27) */
 footer{margin-top:32px;color:var(--sub);font-size:13.5px;border-top:1px solid var(--line);padding-top:16px}
 .todo{background:#FFF3C4;color:#5A4300;padding:0 4px;border-radius:4px}
 @media (prefers-color-scheme:dark){.todo{background:#4A3A0A;color:#FFE08A}}
